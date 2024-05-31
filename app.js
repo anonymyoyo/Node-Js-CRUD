@@ -8,4 +8,8 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 500;
 
+// Parsing middleware
+// Parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}));
+
 app.listen(port, ()=> console.log('Listening on port ${port}'));

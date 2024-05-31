@@ -12,6 +12,9 @@ const port = process.env.PORT || 1000;
 // Parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: false}));
 
+// Parse application/json0
 app.use(bodyParser.json());
 
+// Permet d'ajouter une liaison vers un fichier static et ici nous avons choisi le doc public
+app.use(express.static('public'))
 app.listen(port, ()=> console.log("Listening on port "+port));

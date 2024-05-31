@@ -16,5 +16,8 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 // Permet d'ajouter une liaison vers un fichier static et ici nous avons choisi le doc public
-app.use(express.static('public'))
+app.use(express.static('public'));
+
+
+
 app.listen(port, ()=> console.log("Listening on port "+port));

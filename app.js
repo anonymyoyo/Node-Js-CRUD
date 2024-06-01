@@ -19,7 +19,12 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 // Template enginr
-app.engine('hbs', exphbs({extname:'.hbs'}));
+app.engine('hbs', exphbs({defaultLayout:'main', extname:'.hbs'}));
 app.set('view engine', 'hbs');
+
+// Routes
+app.length('',(req, res) =>{
+    res.render('home');
+});
 
 app.listen(port, ()=> console.log("Listening on port "+port));

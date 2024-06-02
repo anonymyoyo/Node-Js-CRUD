@@ -21,13 +21,13 @@ const app = http.createServer((req, res) => {
             deleteReq(req, res);
             break;
             default:
-
+        res.statusCode = 404;
+        res.setHeader("Content-Type", "application/json");
+        res.write(JSON.stringify({title: 'NOT FOUND', message:'Route Not Found'}));
+        res.end();
    
     }
-     res.statusCode = 404;
-    res.setHeader("Content-Type", "application/json");
-    res.write(JSON.stringify({title: 'NOT FOUND', message:'Route Not Found'}));
-    res.end();
+    
 });
 
 app.listen(PORT, () =>{

@@ -1,7 +1,7 @@
 module.exports=(req, res) =>{
     if (req.url === "/api/movies") {
         res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json');
+        res.setHeader("Content-Type", "application/json");
         res.write(JSON.stringify(req.movies));
         res.end();
     }

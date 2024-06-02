@@ -5,10 +5,27 @@ require('dotenv').config();
 const PORT = process.env.PORT || 5001;
 
 const app = http.createServer((req, res) => {
-    res.statusCode = 200;
+    switch(req.method){
+        case 'GET':
+            getReq(req, res);
+            break;
+        case 'POST':
+            postReq(req, res);
+            break;
+        case 'PUT':
+            putReq(req, res);
+            break;
+        case 'DELETE':
+            deleteReq(req, res);
+            break;
+            default:
+
+    res.statusCode = 404;
     res.setHeader("Content-Type", "application/json");
-    res.write(JSON.stringify({message:'Hello YOYO to Node Js course'}));
+    res.write(JSON.stringify({title: 'NOT FOUND', message:'Route Not Found'}));
     res.end();
+    }
+    
 });
 
 app.listen(PORT, () =>{

@@ -1,31 +1,33 @@
 const http = require('http');
-require('dotenv').config();
+// require('dotenv').config();
 // require("dotenv").config();
 
 const PORT = process.env.PORT || 5001;
 
+// const [req, method] = getReq(req);
+
 const app = http.createServer((req, res) => {
     switch(req.method){
-        case 'GET':
+        case "get":
             getReq(req, res);
             break;
-        case 'POST':
+        case "post":
             postReq(req, res);
             break;
-        case 'PUT':
+        case "put":
             putReq(req, res);
             break;
-        case 'DELETE':
+        case "delete":
             deleteReq(req, res);
             break;
             default:
 
-    res.statusCode = 404;
+   
+    }
+     res.statusCode = 404;
     res.setHeader("Content-Type", "application/json");
     res.write(JSON.stringify({title: 'NOT FOUND', message:'Route Not Found'}));
     res.end();
-    }
-    
 });
 
 app.listen(PORT, () =>{

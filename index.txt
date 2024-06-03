@@ -1,3 +1,5 @@
 API CRUD Node Js 
 
 Le but sera de creer une API aidant a un systeme de gestion des films
+
+il me reste 27minutes

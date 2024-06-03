@@ -1,5 +1,10 @@
-module.exports=(req, res) =>{
-    if (req.url === "/api/movies") {
+module.exports =(req, res) =>{
+    let baseUrl = req.url.substring(0, req.url.lastIndexOf("/") + 1);
+    console.log(baseUrl);
+    let id = req.url.split("/");
+    console.log(id);
+    
+    if (req.url === "/data/movies") {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");
         res.write(JSON.stringify(req.movies));

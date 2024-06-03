@@ -15,16 +15,16 @@ const PORT = process.env.PORT || 5001;
 const app = http.createServer((req, res) => {
     req.movies=movies;
     switch(req.method){
-        case "get":
+        case "GET":
             getReq(req, res);
             break;
-        case "post":
+        case "POST":
             postReq(req, res);
             break;
-        case "put":
+        case "PUT":
             putReq(req, res);
             break;
-        case "delete":
+        case "DELETE":
             deleteReq(req, res);
             break;
             default:

@@ -14,7 +14,7 @@ module.exports =(req, res) =>{
         // res.statusCode = 200;
         // res.writeHeader("Content-Type", "application/json");
         res.writeHead(400, {"Content-Type": "application/json"});
-        res.end(JSON.stringify({title: 'VALIDATION FAILED', message:'URL ID IS NOT VALID',}));
+        res.end(JSON.stringify({title: 'VALIDATION FAILED', message:'UUID IS NOT VALID',}));
     }
         else if(baseUrl === '/api/movies/' && regexV4.test(id)){
         // res.statusCode = 200;s

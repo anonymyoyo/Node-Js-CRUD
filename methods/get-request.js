@@ -3,7 +3,7 @@ module.exports =(req, res) =>{
     // console.log(baseUrl);
     let id = req.url.split("/")[3];
     const regexV4 = new RegExp(/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{3}-[89AB] [0-9A-F]{3}-[0-9A-F]{12}$/i);
-    console.log(id);
+    // console.log(id);
     if (req.url === "/api/movies") {
         res.statusCode = 200;
         res.setHeader("Content-Type", "application/json");

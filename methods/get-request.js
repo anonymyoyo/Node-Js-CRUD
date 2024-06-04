@@ -1,7 +1,7 @@
 module.exports =(req, res) =>{
     let baseUrl = req.url.substring(0, req.url.lastIndexOf("/") + 1);
-    console.log(baseUrl);
-    let id = req.url.split("/");
+    // console.log(baseUrl);
+    let id = req.url.split("/")[3];
     const regexV4 = new RegExp(/^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{3}-[89AB] [0-9A-F]{3}-[0-9A-F]{12}$/i);
     console.log(id);
     if (req.url === "/api/movies") {
@@ -11,15 +11,17 @@ module.exports =(req, res) =>{
         res.end();
     }
     else if(!regexV4.test(id)){
+        // res.statusCode = 200;
+        // res.writeHeader("Content-Type", "application/json");
         res.writeHead(400, {"Content-Type": "application/json"});
-        res.end(JSON.stringify({title: 'VALIDATION FAILED', message:'URL ID IS NOT VALID'}));
+        res.end(JSON.stringify({title: 'VALIDATION FAILED', message:'URL ID IS NOT VALID',}));
     }
-    else if(regexV4.test(id)){
-        res.statusCode = 200;
+        else if(baseUrl === '/api/movies/' && regexV4.test(id)){
+        // res.statusCode = 200;s
         res.setHeader("Content-Type", "application/json");
         let filteredMovie = req.movies.filter((movie) =>{
             return movie.id === id;
-        })
+        });
 
         if(filteredMovie.length > 0){
             res.statusCode = 200;
@@ -29,9 +31,10 @@ module.exports =(req, res) =>{
         else{
             res.statusCode = 404;
             res.write(JSON.stringify({title: 'NOT FOUND', message:'Movie Not Found'}));
+            res.end();
         }
-        // res.write();
-        // res.end();
+    //     // res.write();
+    //     // res.end();
     }
     else{
         

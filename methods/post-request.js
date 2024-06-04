@@ -1,5 +1,6 @@
 const crypto = require('crypto');
 const requestBodyparser = require('../util/body-parser');
+const writeToFile = require('../util/write-to-file');
 module.exports= async (req, res) =>{
     if (req.url === '/api/movies'){
         try {
@@ -7,6 +8,7 @@ module.exports= async (req, res) =>{
             body.id = crypto.randomUUID();
             // console.log('Request Body: ', body);
             req.movies.push(body);
+            writeToFile(req.movies);
             res.writeHead(201, {'Content-Type': 'application/json'});
             res.end();
         } catch (error) {
@@ -17,5 +19,9 @@ module.exports= async (req, res) =>{
                 res.end(JSON.stringify({title: 'VALIDATION FAILED', message:'REQUEST BODY IS NOT VALID',}))
             );
         }
+    }
+    else{
+        res.writeHead(404, {"Content-Type": "application/json"});
+        res.end(JSON.stringify({title: 'NOT FOUND', message:'Route Not Found'}));
     }
 };
